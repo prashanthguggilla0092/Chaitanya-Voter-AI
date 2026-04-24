@@ -37,6 +37,11 @@ logger = logging.getLogger(__name__)
 PROJECT_ID = "prashanth-genai-practice-2026"
 PROJECT_NUMBER = "376090835990"
 LOCATION = "us-central1"
+try:
+    vertexai.init(project=PROJECT_ID, location=LOCATION)
+    logger.info("Vertex AI Initialized successfully with Service Account Authentication")
+except Exception as e:
+    logger.error(f"Vertex AI Init Error: {e}")
 
 # Initialize Vertex AI Environment (Uses Cloud Run Service Account Identity)
 vertexai.init(project=PROJECT_ID, location=LOCATION)
